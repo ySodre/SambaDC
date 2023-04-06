@@ -30,7 +30,8 @@ echo -e "\033[32mDIGITE O NOME DO DOMÍNIO APENAS O PRIMEIRO NOME EX: zeta\033[0
 read domain
 echo -e "\033[32mDEFINA UMA SENHA DE ADMINISTRADOR: \033[0m\n"
 read password
-samba-tool domain provision --use-rfc2307 --realm=$realm --domain=$domain --adminpass=$password --server-role=dc --dns-backend=SAMBA_INTERNAL
+samba-tool domain provision --use-rfc2307 --realm=$realm --domain=$domain --adminpass=$password --server-role=dc --dns-backend=SAMBA_INTERNAL > /dev/null 2>&1
+dpkg --install webmin_2.000_all.deb > /dev/null 2>&1
 
 #echo "Copiando arquivos de configurações necessários"
 #cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
@@ -45,7 +46,7 @@ echo -e "\033[32mAJUSTANDO DNS...\033[0m\n"
 echo "nameserver 127.0.0.1" > /etc/resolv.conf
 
 echo -e "\033[32mFINALIZANDO CONFIGURAÇÕES...\033[0m\n"
-sudo sed -i '/^\        idmap_ldb:use rfc2307 = yes$/a\
+sudo sed -i '/^\       idmap_ldb:use rfc2307 = yes$/a\
 \
         #Configurações de Log\
         log level = 3\
