@@ -1,10 +1,11 @@
 #!/bin/bash
 echo -e "\033[32mATUALIZANDO O SISTEMA...\033[0m\n"
 
-apt update -y && apt dist-upgrade -y  > /dev/null 2>&1
+apt update -y > /dev/null 2>&1
+apt dist-upgrade -y  > /dev/null 2>&1
 echo -e "\033[32mINSTALANDO SAMBA...\033[0m\n"
 apt install samba -y  > /dev/null 2>&1
-echo -e "\033[32mINSTALANDO WINBIND\033[0m\n"
+echo -e "\033[32mINSTALANDO WINBIND...\033[0m\n"
 apt install winbind -y  > /dev/null 2>&1
 #apt install krb5-user -y 1>/dev/null
 echo -e "\033[32mINSTALANDO WEBMIN...\033[0m\n" 
@@ -23,7 +24,7 @@ echo -e "\033[32mREMOVENDO ARQUIVOS DE CONFIGURAÇÃO PADRÃO...\033[0m\n"
 rm /etc/samba/smb.conf
 
 echo -e "\033[32mPROVISIONANDO O DOMÍNIO...\033[0m\n"
-echo "\033[32mDIGITE O NOME DO DOMÍNIO COMPLETO EX: zeta.local\033[0m\n"
+echo -e "\033[32mDIGITE O NOME DO DOMÍNIO COMPLETO EX: zeta.local\033[0m\n"
 read realm
 echo -e "\033[32mDIGITE O NOME DO DOMÍNIO APENAS O PRIMEIRO NOME EX: zeta\033[0m\n"
 read domain
