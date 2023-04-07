@@ -31,7 +31,7 @@ read domain
 echo -e "\033[32mDEFINA UMA SENHA DE ADMINISTRADOR: \033[0m\n"
 read password
 samba-tool domain provision --use-rfc2307 --realm=$realm --domain=$domain --adminpass=$password --server-role=dc --dns-backend=SAMBA_INTERNAL > /dev/null 2>&1
-dpkg --install webmin_2.000_all.deb > /dev/null 2>&1
+
 
 #echo "Copiando arquivos de configurações necessários"
 #cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
